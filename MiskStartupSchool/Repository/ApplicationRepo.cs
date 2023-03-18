@@ -73,25 +73,11 @@ namespace MiskStartupSchool.Repository
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
             if (data == null) return null;
 
-            //return new ProgramDto()
-            //{
-            //    Duration = data.Duration,
-            //    ProgramDescription = data.ProgramDescription,
-            //    ApplciationOpen = data.ApplciationOpen,
-            //    ApplicationClose = data.ApplicationClose,
-            //    ApplicationCriteria = data.ApplicationCriteria,
-            //    KeySkills = data.KeySkills,
-            //    MaxApplications = data.MaxApplications,
-            //    MinQualification = data.MinQualification,
-            //    ProgramBenefits = data.ProgramBenefits,
-            //    ProgramLocation = data.ProgramLocation,
-            //    ProgramStart = data.ProgramStart,
-            //    ProgramSummary = data.ProgramSummary,
-            //    ProgramTitle = data.ProgramTitle,
-            //    ProgramType = data.ProgramType
-            //};
-            return _mapper.Map<ProgramDto>(data);
+           
+            var res = _mapper.Map<ProgramDto>(data);
+            return res;
         }
+
         public async Task<List<ProgramDto>> GetAllProgramAsync()
         {
             

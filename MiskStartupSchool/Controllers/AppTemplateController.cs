@@ -20,14 +20,14 @@ namespace MiskStartupSchool.Controllers
         [HttpGet("get-apptemp")]
         public async Task<IActionResult> GetAppTemp(string Id)
         {
-            var data = await _temp.GetTemplate(Id);
+            var data = await _temp.GetTemplateAsync(Id);
             return Ok(data);
         }
 
         [HttpPut("update-apptemp")]
         public async Task<IActionResult> UpdateWorkflow(AppTemplateDto program, string Id)
         {
-            var data = await _temp.UpdateTemplate(program, Id);
+            var data = await _temp.UpdateTemplateAsync(program, Id);
             return data ? Ok(StatusCode(200)) : BadRequest(StatusCode(404));
         }
     }

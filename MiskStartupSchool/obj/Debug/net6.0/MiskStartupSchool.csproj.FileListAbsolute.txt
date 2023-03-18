@@ -149,3 +149,5 @@ C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\obj\
 C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\obj\Debug\net6.0\MiskStartupSchool.pdb
 C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\obj\Debug\net6.0\MiskStartupSchool.genruntimeconfig.cache
 C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\obj\Debug\net6.0\ref\MiskStartupSchool.dll
+C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\hp\Downloads\MiskStartupSchool\MiskStartupSchool\MiskStartupSchool\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

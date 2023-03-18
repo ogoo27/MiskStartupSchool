@@ -18,13 +18,13 @@ namespace MiskStartupSchool.Controllers
         [HttpPost("add-application")]
         public async Task<IActionResult> AddApplication([FromBody] ApplicationDto application)
         {
-            return Ok(await _appRepo.Add(application));
+            return Ok(await _appRepo.AddAsync(application));
         }
 
         [HttpGet("get-program")]
         public async Task<IActionResult> GetProgram(string Id)
         {
-           var data = await _appRepo.GetProgram(Id);
+           var data = await _appRepo.GetProgramAsync(Id);
             return Ok(data);
         }
 
@@ -32,14 +32,14 @@ namespace MiskStartupSchool.Controllers
         [HttpGet("preview")]
         public async Task<IActionResult> GetAllProgram()
         {
-            var data = await _appRepo.GetAllProgram();
+            var data = await _appRepo.GetAllProgramAsync();
             return Ok(data);
         }
 
         [HttpPut("update-program")]
         public async Task<IActionResult> UpdateProgram(ProgramDto program, string Id)
         {
-            var data = await _appRepo.UpdateProgram(program, Id);
+            var data = await _appRepo.UpdateProgramAsync(program, Id);
             return data? Ok(StatusCode(200)) : BadRequest(StatusCode(404));
         }
     }
