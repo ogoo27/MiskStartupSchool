@@ -1,6 +1,6 @@
 ﻿namespace MiskStartupSchool.Entities
 {
-    public class Profile
+    public class Details
     {
         public string Id { get; set; }
         public string ApplicationFormId { get; set; }
@@ -9,14 +9,14 @@
         public bool Current { get; set; } = false;
     }
 
-    public class Education : Profile
+    public class Education : Details
     {
         public string Name { get; set; }
         public string Course { get; set; }
         
     }
 
-    public class Experience : Profile
+    public class Experience : Details
     {
         public string CompanyName { get; set; }
         public string Title { get; set; }

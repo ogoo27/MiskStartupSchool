@@ -14,7 +14,7 @@ namespace MiskStartupSchool.Repository
             _context = context;
         }
 
-        public async Task<AppTemplateDto> GetTemplate(string Id)
+        public async Task<AppTemplateDto> GetTemplateAsync(string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
             if (data == null) return null;
@@ -36,7 +36,7 @@ namespace MiskStartupSchool.Repository
             };
         }
 
-        public async Task<bool> UpdateTemplate(AppTemplateDto program, string Id)
+        public async Task<bool> UpdateTemplateAsync(AppTemplateDto program, string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
 

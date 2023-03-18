@@ -4,7 +4,7 @@ namespace MiskStartupSchool.Services
 {
     public interface IAppTemplate
     {
-        Task<AppTemplateDto> GetTemplate(string Id);
-        Task<bool> UpdateTemplate(AppTemplateDto program, string Id);
+        Task<AppTemplateDto> GetTemplateAsync(string Id);
+        Task<bool> UpdateTemplateAsync(AppTemplateDto program, string Id);
     }
 }

@@ -16,7 +16,7 @@ namespace MiskStartupSchool.Repository
         }
 
         
-        public async Task<WorkflowDto> GetWorkflow(string Id)
+        public async Task<WorkflowDto> GetWorkflowAsync(string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
             if (data == null) return null;
@@ -27,7 +27,7 @@ namespace MiskStartupSchool.Repository
             };
         }
         
-        public async Task<bool> UpdateWorkflow(WorkflowDto program, string Id)
+        public async Task<bool> UpdateWorkflowAsync(WorkflowDto program, string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
 

@@ -1,20 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MiskStartupSchool.Context;
 using MiskStartupSchool.DTO;
 using MiskStartupSchool.Entities;
 using MiskStartupSchool.Enums;
 using MiskStartupSchool.Services;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MiskStartupSchool.Repository
 {
     public class ApplicationRepo : IApplicationRepo
     {
-        readonly ApplicationDbContext _context;
-        public ApplicationRepo(ApplicationDbContext context)
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public ApplicationRepo(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public async Task<string> Add(ApplicationDto application)
+        public async Task<string> AddAsync(ApplicationDto application)
         {
             if (application == null) return null;
 
@@ -63,30 +68,31 @@ namespace MiskStartupSchool.Repository
                 
             }
         }
-        public async Task<ProgramDto> GetProgram(string Id)
+        public async Task<ProgramDto> GetProgramAsync(string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
             if (data == null) return null;
 
-            return new ProgramDto()
-            {
-                Duration = data.Duration,
-                ProgramDescription = data.ProgramDescription,
-                ApplciationOpen = data.ApplciationOpen,
-                ApplicationClose = data.ApplicationClose,
-                ApplicationCriteria = data.ApplicationCriteria,
-                KeySkills = data.KeySkills,
-                MaxApplications = data.MaxApplications,
-                MinQualification = data.MinQualification,
-                ProgramBenefits = data.ProgramBenefits,
-                ProgramLocation = data.ProgramLocation,
-                ProgramStart = data.ProgramStart,
-                ProgramSummary = data.ProgramSummary,
-                ProgramTitle = data.ProgramTitle,
-                ProgramType = data.ProgramType
-            };
+            //return new ProgramDto()
+            //{
+            //    Duration = data.Duration,
+            //    ProgramDescription = data.ProgramDescription,
+            //    ApplciationOpen = data.ApplciationOpen,
+            //    ApplicationClose = data.ApplicationClose,
+            //    ApplicationCriteria = data.ApplicationCriteria,
+            //    KeySkills = data.KeySkills,
+            //    MaxApplications = data.MaxApplications,
+            //    MinQualification = data.MinQualification,
+            //    ProgramBenefits = data.ProgramBenefits,
+            //    ProgramLocation = data.ProgramLocation,
+            //    ProgramStart = data.ProgramStart,
+            //    ProgramSummary = data.ProgramSummary,
+            //    ProgramTitle = data.ProgramTitle,
+            //    ProgramType = data.ProgramType
+            //};
+            return _mapper.Map<ProgramDto>(data);
         }
-        public async Task<List<ProgramDto>> GetAllProgram()
+        public async Task<List<ProgramDto>> GetAllProgramAsync()
         {
             
             return await _context.application.Select(x => 
@@ -108,11 +114,12 @@ namespace MiskStartupSchool.Repository
                 ProgramType = x.ProgramType
             }).ToListAsync();
         }
-        public Task<bool> Remove(string Id)
+        public  Task<bool> Remove(string Id)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> UpdateProgram(ProgramDto program, string Id)
+
+        public async Task<bool> UpdateProgramAsync(ProgramDto program, string Id)
         {
             var data = await _context.application.FirstOrDefaultAsync(x => x.ApplicationId == Id);
 
@@ -136,5 +143,8 @@ namespace MiskStartupSchool.Repository
             _context.Update(data);
             return _context.SaveChanges() > 0;
         }
+
+        
+        
     }
 }

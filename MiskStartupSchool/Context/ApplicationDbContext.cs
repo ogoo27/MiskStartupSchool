@@ -25,7 +25,7 @@ namespace MiskStartupSchool.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ApplicationForm>()
-                .ToContainer("application")
+                .ToContainer("project")
                 .HasPartitionKey(x => x.ApplicationId);
 
             builder.Entity<ApplicationForm>().OwnsMany(x => x.Educations);
