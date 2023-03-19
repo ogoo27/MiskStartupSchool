@@ -9,7 +9,7 @@ namespace MiskStartupSchool.Entities
     {
         [Key]
         [JsonProperty(PropertyName = "ApplicationId")]
-        public string? ApplicationId { get; set; }
+        public string? ApplicationId { get; set; } = Guid.NewGuid().ToString();
         public string ImageUrl { get; set; }
         public string ResumeUrl { get; set; }
         public string FirstName { get; set; }

@@ -11,6 +11,12 @@ namespace MiskStartupSchool.Helpers
         public ApplicationProfile()
         {
             CreateMap<ApplicationForm , ProgramDto>().ReverseMap();
+            CreateMap<ApplicationForm , ApplicationDto>().ReverseMap();
+            CreateMap<ApplicationForm, AppTemplateDto>().ReverseMap();
+            CreateMap<ApplicationForm, WorkflowDto>().ReverseMap();
+
+
+
 
         }
 

@@ -32,8 +32,17 @@ namespace MiskStartupSchool.Controllers
         [HttpGet("preview")]
         public async Task<IActionResult> GetAllProgram()
         {
-            var data = await _appRepo.GetAllProgramAsync();
-            return Ok(data);
+            try
+            {
+                var data = await _appRepo.GetAllProgramAsync();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+            
         }
 
         [HttpPut("update-program")]
